@@ -1,0 +1,394 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .score-box {
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #007bff;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            margin-bottom: 30px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"],
+        button,
+        .score-box {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+            display: none; /* Initially hide the image */
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+    <script>
+        function previewFile() {
+            const preview = document.getElementById('preview');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // Convert file to base64 string and display it
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the CrackSeg Dashboard</h1>
+        <div class="score-box">Your Score: {{ score }} Points</div>
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required onchange="previewFile()">
+            <img id="preview" alt="Image Preview">
+            <button type="submit">Upload and Process</button>
+        </form>
+       
+    
+        <img src="{{ url_for('static', filename=photo) }}" alt="Uploaded Photo">
+       
+        <br>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .score-box {
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #007bff;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            margin-bottom: 30px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"],
+        button,
+        .score-box {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px; /* Added margin-bottom */
+        }
+
+        .redeem-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px; /* Smaller padding */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px; /* Smaller font size */
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px; /* Separation from Upload button */
+        }
+
+        button:hover, .redeem-btn:hover {
+            background-color: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+            display: none; /* Initially hide the image */
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+    <script>
+        function previewFile() {
+            const preview = document.getElementById('preview');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // Convert file to base64 string and display it
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</head>
+
+<!-- <body>
+    <div class="container">
+        <h1>Welcome to the CrackSeg Dashboard</h1>
+        <div class="score-box">Your Score: {{ score }} Points</div>
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required onchange="previewFile()">
+            <img id="preview" alt="Image Preview">
+            <button type="submit">Upload and Process</button>
+            <button type="submit" class="redeem-btn">Redeem Points</button> <!-- Added Redeem Points button -->
+        <!-- </form>
+        <img src="{{ url_for('static', filename=photo) }}" alt="Uploaded Photo">
+        <br>
+        <a href="/logout">Logout</a>
+    </div>
+</body> --> 
+
+<!--<body>
+    <div class="container">
+        <h1>Welcome to the CrackSeg Dashboard</h1>
+        <div class="score-box">Your Score: {{ score }} Points</div>
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required onchange="previewFile()">
+            <img id="preview" alt="Image Preview" style="display: none;"> <!-- Ensure display is none initially -->
+            <!-- <button type="submit">Upload and Process</button>
+            <button type="submit" class="redeem-btn">Redeem Points</button>
+        </form>
+        {% if segmented_image_data %}
+            <img src="data:image/png;base64,{{ segmented_image_data }}" alt="Segmented Image" style="display: block; max-width: 100%;">
+        {% endif %}
+        <br>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <script>
+        function previewFile() {
+            const preview = document.getElementById('preview');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // Convert file to base64 string and display it
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Make sure to display the image when loaded
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body> --> 
+
+<body>
+    <div class="container">
+        <h1>Welcome to the CrackSeg Dashboard</h1>
+        <div class="score-box">Your Score: {{ score }} Points</div>
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required onchange="previewFile()">
+            <img id="preview" alt="Image Preview" style="display: none;">
+            <button type="submit">Upload and Process</button>
+            <button type="submit" class="redeem-btn" onclick="location.href='{{ url_for('redeem_points') }}';">Redeem Points</button>
+        </form>
+        {% if segmented_image_data %}
+            <img src="data:image/png;base64,{{ segmented_image_data }}" alt="Segmented Image" style="max-width: 100%; display: block;">
+        {% endif %}
+        <br>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <script>
+        function previewFile() {
+            const preview = document.getElementById('preview');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // Convert file to base64 string and display it
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Make sure to display the image when loaded
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+
+</html>
+

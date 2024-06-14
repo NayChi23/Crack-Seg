@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmented Image</title>
+</head>
+<body>
+    <h1>Segmented Image</h1>
+    <img src="/Users/krislwin/Documents/Flask-Authentication/output.png" alt="Segmented Image">
+    <br>
+
+    <img src="data:image/png;base64,{{ segmented_image_data }}" alt="Segmented Image">
+    <br>
+    <a href="{{ url_for('dashboard_level2') }}">Go back to Dashboard</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmented Image</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .image-container img.same-size {
+            width: 300px;  /* Set a fixed width for all images */
+            height: 300px; /* Set a fixed height for all images */
+            object-fit: cover; /* Ensure the image covers the box while maintaining aspect ratio */
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .image-container img.same-size {
+                width: 100%;  /* Ensure images are responsive */
+                height: auto; /* Ensure images are responsive */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Segmented Image</h1>
+    <div class="image-container">
+        <img src="{{ url_for('output_image') }}" alt="Segmented Image from Path" class="same-size">
+        <!-- <img src="data:image/png;base64,{{ segmented_image_data }}" alt="Segmented Image from Base64" class="same-size"> -->
+    </div>
+    <br>
+    <a href="{{ url_for('dashboard_level2') }}">Go back to Dashboard</a>
+</body>
+</html>

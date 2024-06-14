@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Conversion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 1000px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        select, button {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            color: #007bff;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ClearConverse</h1>
+        <form action="{{ url_for('inference') }}" method="post" enctype="multipart/form-data">
+            <label for="audio">Upload Source Audio:</label>
+            <input type="file" id="audio" name="audio" accept="audio/wav" required><br><br>
+            
+            <label for="gender">Select Target Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br><br>
+            
+            <button type="submit">Convert Voice</button>
+        </form>
+        {% if request.args.get('output') %}
+        <h2>Converted Voice</h2>
+        <audio controls>
+            <source src="{{ request.args.get('output') }}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        {% endif %}
+    </div>
+</body>
+</html>
